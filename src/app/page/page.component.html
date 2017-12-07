@@ -1,0 +1,8 @@
+<div *ngFor="let p of posts" class="post">
+  <h4>{{p.title}}</h4>
+  <hr>
+  <p>Submitted at {{p.createdAt}} by {{p.user}} to <a routerLink="/g/{{p.page}}"> /g/{{ p.page }} </a></p>
+  <div class="post-footer">
+    <a href="#">View comments ({{p.comments.length.toString()}})</a>
+  </div>
+</div>
