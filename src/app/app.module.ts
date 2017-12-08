@@ -12,6 +12,10 @@ import { PageService } from './page/page.service';
 import { DashboardService } from './dashboard/dashboard.service';
 import { PostComponent } from './post/post.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
+import { LoginService } from './login/login.service';
 
 
 @NgModule({
@@ -20,7 +24,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeaderComponent,
     PageComponent,
     PostComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent,
+    ProfileComponent,
+    ProfileDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     MaterializeModule
   ],
-  providers: [PageService, DashboardService],
+  providers: [PageService, DashboardService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
