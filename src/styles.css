@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.post {
+    margin-top: 10px;
+    border: solid;
+}
+
+.post-footer p {
+    display: inline;
+    font-size: 12px;
+}   
