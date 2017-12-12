@@ -17,4 +17,7 @@
     </form>
 </div>
 <button class="btn" (click)="back()"><i class="material-icons">keyboard_return</i></button>
-<button class="btn" (click)="logout()"><i class="material-icons">exit_to_app</i></button>
+<div *ngIf="loggedIn">
+  <button class="btn" (click)="logout()"><i class="material-icons">exit_to_app</i></button>
+</div>
+

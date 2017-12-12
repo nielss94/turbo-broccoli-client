@@ -24,6 +24,11 @@ export class HeaderComponent implements OnInit {
     .subscribe(
       (user) => {
         this.user = user;
+        if (localStorage.getItem('username')) {
+          this.loggedIn = true;
+        }else {
+          this.loggedIn = false;
+        }
         console.log('header user is: ' + this.user);
       });
   }
