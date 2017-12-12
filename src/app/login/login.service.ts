@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginService {
     userLoggedIn = new Subject<string>();
     private headers = new Headers({ 'Content-Type': 'application/json'});
-    private serverUrl = 'http://localhost:3000/api/v1' + '/login';
+    private serverUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/login';
 
     private currentUser: string;
 

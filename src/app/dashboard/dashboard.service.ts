@@ -9,7 +9,7 @@ export class DashboardService {
     private headers = new Headers({ 'Content-Type': 'application/json',
     'Authorization' : 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE' +
     '1MTI3Mzk5MDgsImlhdCI6MTUxMjU2NzEwOCwic3ViIjoiRmVsaXgifQ.zCwEyOBMqCzAyxSa0NjCTqP1r2shyBquHsv_Xjubv-8'});
-    private serverUrl = 'http://localhost:3000/api/v1' + '/posts';
+    private serverUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/posts';
 
     private posts: Post[] = [];
 

@@ -8,7 +8,7 @@ export class PageService {
     postsChanged = new Subject<Post[]>();
     private headers = new Headers({ 'Content-Type': 'application/json',
     'Authorization' : 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTMyNDI5OTgsImlhdCI6MTUxMzA3MDE5OCwic3ViIjoiTmllbHNzIn0.sCU2-gadSrTGyAltU1O08aXRFf9u9GOKs9zfrDuSbdw'});
-    private serverUrl = 'http://localhost:3000/api/v1' + '/posts';
+    private serverUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/posts';
 
     private posts: Post[] = [];
 
