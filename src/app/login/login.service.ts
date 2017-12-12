@@ -18,6 +18,7 @@ export class LoginService {
         .then((response) => {
             localStorage.setItem('username', response.json().username);
             localStorage.setItem('token', response.json().token);
+            localStorage.setItem('userId', response.json().id);
             this.currentUser = response.json().username;
             this.userLoggedIn.next(this.currentUser);
             return true;
@@ -36,5 +37,13 @@ export class LoginService {
     private handleError(error: any): Promise<any> {
         console.log('handleError');
         return Promise.reject(error.message || error);
+    }
+    
+    public loggedIn() {
+        if(localStorage.getItem('username')){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

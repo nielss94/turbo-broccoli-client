@@ -16,7 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
 import { LoginService } from './login/login.service';
-
+import { PostService } from './post/post.service';
+import { ProfileService } from './profile/profile-detail/profile.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { LoginService } from './login/login.service';
     AppRoutingModule,
     MaterializeModule
   ],
-  providers: [PageService, DashboardService, LoginService],
+  providers: [PageService, DashboardService, LoginService, PostService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

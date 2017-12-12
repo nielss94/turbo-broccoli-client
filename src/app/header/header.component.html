@@ -1,8 +1,9 @@
-<nav class="nav-extended">
+<nav >
   <div class="nav-wrapper">
     <a routerLink="/dashboard" class="brand-logo"> TURBO BROCCOLI </a>
-    <ul class="right hide-on-med-and-down">
-      <a routerLink="/profile"><i class="large material-icons">person</i></a>
+    <ul class="profile-button right">
+      <li><a routerLink="/profile"><i class="large material-icons">person</i></a></li>
+      <li><a *ngIf="loggedIn" class="btn" (click)="logout()"><i class="material-icons small">exit_to_app</i></a></li>
     </ul>
   </div>
 </nav>
@@ -15,9 +16,5 @@
         <i class="material-icons">close</i>
       </div>
     </form>
-</div>
-<button class="btn" (click)="back()"><i class="material-icons">keyboard_return</i></button>
-<div *ngIf="loggedIn">
-  <button class="btn" (click)="logout()"><i class="material-icons">exit_to_app</i></button>
 </div>
 

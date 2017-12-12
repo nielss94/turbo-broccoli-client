@@ -7,8 +7,7 @@ import { Subject } from 'rxjs/Subject';
 export class PageService {
     postsChanged = new Subject<Post[]>();
     private headers = new Headers({ 'Content-Type': 'application/json',
-    'Authorization' : 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE' +
-    '1MTI3Mzk5MDgsImlhdCI6MTUxMjU2NzEwOCwic3ViIjoiRmVsaXgifQ.zCwEyOBMqCzAyxSa0NjCTqP1r2shyBquHsv_Xjubv-8'});
+    'Authorization' : 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTMyNDI5OTgsImlhdCI6MTUxMzA3MDE5OCwic3ViIjoiTmllbHNzIn0.sCU2-gadSrTGyAltU1O08aXRFf9u9GOKs9zfrDuSbdw'});
     private serverUrl = 'http://localhost:3000/api/v1' + '/posts';
 
     private posts: Post[] = [];
@@ -26,10 +25,32 @@ export class PageService {
     });
   }
 
+  private httpPostPostToPage(post) {
+    return this.http.post(this.serverUrl, post, {headers: this.headers})
+    .toPromise()
+    .then((response) => {
+      return response.json() as Post;
+    })
+    .catch((error) => {
+      return this.handleError(error);
+    });
+  }
+
   public getPostsFromPage(page: string) {
     this.httpGetPostsFromPage(page)
     .then((posts) => {
         this.posts = posts;
+        this.postsChanged.next(this.posts.slice());
+    })
+    .catch((rejected) => {
+        console.log(rejected);
+    });
+  }
+
+  public postPostToPage(post) {
+    this.httpPostPostToPage(post)
+    .then((post) => {
+        this.posts.push(post);
         this.postsChanged.next(this.posts.slice());
     })
     .catch((rejected) => {

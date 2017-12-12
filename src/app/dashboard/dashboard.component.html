@@ -1,8 +1,17 @@
-<div *ngFor="let p of posts" class="post">
-    <h4>{{p.title}}</h4>
-    <hr>
-    <p>Submitted at {{p.createdAt}} by {{p.user}} to <a routerLink="/g/{{p.page}}"> /g/{{ p.page }} </a></p>
-    <div class="post-footer">
-      <a href="#">View comments ({{p.comments.length.toString()}})</a>
+<h3>Dashboard</h3>
+<div *ngFor="let p of posts">
+  <div class="row">
+    <div class="col s12 m10">
+      <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{p.title}}</span>
+        </div>
+        <div class="card-action post-footer">
+          <a href="#">Give coin ({{p.upCoins}} coins)</a>
+          <a routerLink="/g/{{p.page}}/post/{{p._id}}">View comments ({{p.comments.length.toString()}})</a>
+          <p>Post by {{p.user}} to <a routerLink="/g/{{p.page}}"> /g/{{ p.page }} </a></p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
