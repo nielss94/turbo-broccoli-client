@@ -4,6 +4,7 @@ import { Post } from '../shared/post.model';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
+import { ProfileService } from '../profile/profile-detail/profile.service';
 
 @Component({
   selector: 'app-page',
@@ -13,15 +14,19 @@ import { LoginService } from '../login/login.service';
 export class PageComponent implements OnInit {
 
   posts: Post[];
-  private subscription: Subscription;
+  private postSubscription: Subscription;
+  private subSubscription: Subscription;
+
   page: string;
   creatingPost = false;
+  subscriptions: string[] = [];
 
-  //new post attributes
+  // new post attributes
   title: string;
   content: string;
 
-  constructor(private loginService: LoginService, private pageService: PageService, private route: ActivatedRoute, private router: Router) { }
+  constructor (private profileService: ProfileService, private loginService: LoginService, private pageService: PageService,
+              private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params
@@ -32,24 +37,47 @@ export class PageComponent implements OnInit {
       }
     );
 
-    this.subscription = this.pageService.postsChanged
+    this.postSubscription = this.pageService.postsChanged
       .subscribe(
         (posts: Post[]) => {
           this.posts = posts;
         });
 
+    this.subSubscription = this.profileService.subscriptionsChanged
+      .subscribe(
+        (subscriptions: string[]) => {
+          this.subscriptions = subscriptions;
+          console.log(this.subscriptions);
+        });
+
     this.pageService.getPostsFromPage(this.page);
+    if (localStorage.getItem('username')){
+      this.profileService.getSubscriptionsByUser(localStorage.getItem('username'));
+    }
   }
 
-  createPost(){
-    let post = {
+  createPost() {
+    const post = {
       title: this.title,
       content: this.content,
       user: localStorage.getItem('username'),
       page: this.page
-    }
+    };
     this.pageService.postPostToPage(post);
     this.creatingPost = false;
-    console.log(post);
+  }
+
+  isSubscribed(): boolean {
+    const value = false;
+    for (let i = 0; i < this.subscriptions.length ; i++) {
+      if (this.subscriptions[i] === this.page) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  subscribe() {
+    this.profileService.postSubscribeToPage(Number(localStorage.getItem('userId')), this.page);
   }
 }

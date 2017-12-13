@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
   password: string;
 
   constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { 
-    console.log(localStorage.getItem('username'));
-    if (localStorage.getItem('username')) {
+    if (this.loginService.loggedIn()) {
       router.navigate(['/profile']);
     }
   }

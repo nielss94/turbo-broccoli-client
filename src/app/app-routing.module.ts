@@ -6,6 +6,7 @@ import { PostComponent } from './post/post.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const appRoutes: Routes = [
   { path: 'g/:page/post/:id', component: PostComponent },
   { path: 'profile', component: ProfileComponent, children: [
     {path: '', component: ProfileDetailComponent},
-    {path: 'login', component: LoginComponent}
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent}
   ] },
   { path: '**', redirectTo: '/dashboard'}
 ];
