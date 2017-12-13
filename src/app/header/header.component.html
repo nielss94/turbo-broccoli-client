@@ -1,19 +1,18 @@
 <nav >
   <div class="nav-wrapper">
-    <a routerLink="/dashboard" class="brand-logo"> TURBO BROCCOLI </a>
+    <a routerLink="/dashboard" class="brand-logo hide-on-med-and-up"> T-BROCCOLI </a>
+    <a routerLink="/dashboard" class="brand-logo hide-on-small-only"> TURBO BROCCOLI </a>
     <ul class="profile-button right">
       <li><a routerLink="/profile"><i class="large material-icons">person</i></a></li>
-      <li><a *ngIf="loggedIn" class="btn" (click)="logout()"><i class="material-icons small">exit_to_app</i></a></li>
+      <li><a *ngIf="loggedIn" class="btn small" (click)="logout()"><i class="material-icons small">exit_to_app</i></a></li>
     </ul>
   </div>
 </nav>
 
-<div class="nav-content">
-  <form>
-    <div class="input-field">
-      <input id="search" type="search" required>
-      <label class="label-icon" for="search"><i class="small material-icons">search</i></label>
+<div>
+  <div class="input-field">
+      <input [(ngModel)]="searchValue" name="searchValue" id="search" type="search" required>
+      <a class="btn red" routerLink="/g/{{searchValue.trim().replace(' ', '')}}" class="label-icon" for="search"><i class="small material-icons">search</i></a>
       <i class="material-icons">close</i>
-    </div>
-  </form>
+  </div>
 </div>

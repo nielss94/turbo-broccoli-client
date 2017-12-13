@@ -18,6 +18,7 @@ import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.
 import { LoginService } from './login/login.service';
 import { PostService } from './post/post.service';
 import { ProfileService } from './profile/profile-detail/profile.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileService } from './profile/profile-detail/profile.service';
     DashboardComponent,
     LoginComponent,
     ProfileComponent,
-    ProfileDetailComponent
+    ProfileDetailComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

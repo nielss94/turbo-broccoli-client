@@ -10,7 +10,11 @@
           <input [(ngModel)]="password" name="password" type="password" class="validate">
           <label >Password</label>
         </div>
-        <a class="btn-large waves-effect waves-light red" (click)="login()">Login</a>
-        <a class="btn-large waves-effect waves-light red" routerLink="/profile/register">Register</a>
+        <div class="input-field">
+            <i class="material-icons prefix">email</i>
+            <input [(ngModel)]="email" name="email" type="email" class="validate">
+            <label >Email</label>
+          </div>
+      <a class="btn-large waves-effect waves-light red" (click)="registerUser()">Register</a>
     </form>
   </div>

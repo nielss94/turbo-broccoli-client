@@ -1,14 +1,26 @@
+input#search {
+    float: right;
+    width: 95%;
+}
+
 @media only screen and (max-width: 601px){
-    .nav-wrapper a{
-        width:70%;
-        text-align: center;
+    .nav-wrapper .brand-logo{
+        width:45%;
+    }
+
+    nav .brand-logo {
+        left: 30%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+
+    input#search {
+        float: right;
+        width: 90%;
     }
 }
 
 @media only screen and (max-width: 992px) {
-    nav .brand-logo {
-        left: 40%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
-    }
+    
 }
+

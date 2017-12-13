@@ -53,6 +53,17 @@ export class ProfileService {
       });
     }
 
+    private httpRegisterUser(user) {
+      return this.http.post(this.usersUrl, user, {headers: this.headers})
+      .toPromise()
+      .then((response) => {
+        return response.json() as User;
+      })
+      .catch((error) => {
+        return this.handleError(error);
+      });
+    }
+
     public getSubscriptionsByUser(username) {
       this.httpGetSubscriptionsByUser(username)
         .then((subscriptions) => {
@@ -72,9 +83,20 @@ export class ProfileService {
       this.httpPostSubscribeToPage(userId, page)
       .then((response) => {
         this.getSubscriptionsByUser(localStorage.getItem('username'));
+        console.log('sub/unsub by' + localStorage.getItem('username') + ' ' + localStorage.getItem('userId'));
       })
       .catch((rejected) => {
         console.log(rejected);
+      });
+    }
+
+    public registerUser(user){
+      return this.httpRegisterUser(user)
+      .then((user) => {
+          return user;
+      })
+      .catch((rejected) => {
+          console.log(rejected);
       });
     }
 

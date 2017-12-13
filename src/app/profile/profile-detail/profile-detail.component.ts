@@ -10,7 +10,7 @@ import { ProfileService } from './profile.service';
 })
 export class ProfileDetailComponent implements OnInit {
 
-  user: User;
+  user: User = new User(0,'','');
   username: string;
   email: string;
   private subscription: Subscription;
