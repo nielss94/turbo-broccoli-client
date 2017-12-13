@@ -1,7 +1,17 @@
 <div class="page-title">
   <h3>{{page}}</h3>
   <a *ngIf="loginService.loggedIn()" class="btn red right hide-on-small-only" (click)="creatingPost = true">Create new post</a>
-  <a *ngIf="loginService.loggedIn()" class="btn red right hide-on-med-and-up" (click)="creatingPost = true">New post</a>
+  <a *ngIf="loginService.loggedIn()" class="btn small red right hide-on-med-and-up" (click)="creatingPost = true"><i class="material-icons">add</i></a>
+  <span *ngIf="loginService.loggedIn()">
+    <span *ngIf="isSubscribed();else not_subscribed">
+      <a class="btn red right hide-on-small-only" (click)="subscribe()" styles="{margin-right: 5px}">Unsubscribe</a>
+      <a class="btn small right red hide-on-med-and-up" (click)="subscribe()" styles="{margin-right: 5px}"><i class="material-icons">subscriptions</i></a>
+    </span>
+    <ng-template #not_subscribed>
+      <a class="btn green right hide-on-small-only" (click)="subscribe()" styles="{margin-right: 5px}">Subscribe</a>
+      <a class="btn small right green hide-on-med-and-up" (click)="subscribe()" styles="{margin-right: 5px}"><i class="material-icons">subscriptions</i></a>
+    </ng-template>
+  </span>
 </div>
 <div *ngIf="creatingPost">
   <div class="row">
