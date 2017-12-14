@@ -35,7 +35,6 @@ export class HeaderComponent implements OnInit {
         }else {
           this.loggedIn = false;
         }
-        console.log('header user is: ' + this.user);
       });
 
     this.subSubscription = this.profileService.subscriptionsChanged
