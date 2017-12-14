@@ -38,7 +38,6 @@ export class ProfileDetailComponent implements OnInit {
       .subscribe(
         (subscriptions: string[]) => {
           this.subscriptions = subscriptions;
-          console.log(this.subscriptions);
         });
     this.profileService.getUser(Number(localStorage.getItem('userId')));
     this.profileService.getSubscriptionsByUser(localStorage.getItem('username'));

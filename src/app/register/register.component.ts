@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
       }
       this.profileService.registerUser(user)
         .then(() => {
-          console.log('user created');
           this.router.navigate(['/profile']);  
         })
         .catch((reject) => {

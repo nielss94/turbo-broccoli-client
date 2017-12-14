@@ -33,7 +33,6 @@ export class PageComponent implements OnInit {
     .subscribe(
       (params) => {
         this.page = params['page'];
-        console.log(this.page);
       }
     );
 
@@ -47,7 +46,6 @@ export class PageComponent implements OnInit {
       .subscribe(
         (subscriptions: string[]) => {
           this.subscriptions = subscriptions;
-          console.log(this.subscriptions);
         });
 
     this.pageService.getPostsFromPage(this.page);
