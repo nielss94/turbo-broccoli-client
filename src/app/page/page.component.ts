@@ -4,7 +4,7 @@ import { Post } from '../shared/post.model';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
-import { ProfileService } from '../profile/profile-detail/profile.service';
+import { ProfileService } from '../profile/profile.service';
 
 @Component({
   selector: 'app-page',

@@ -14,7 +14,7 @@ import { Comment } from '../shared/comment.model';
 export class PostComponent implements OnInit {
 
   page: string;
-  id: Number;
+  id: string;
   post: Post;
   comment: string;
 
@@ -42,5 +42,10 @@ export class PostComponent implements OnInit {
 
   postComment() {
     this.postService.postComment(this.post,this.comment);
+  }
+
+
+  deletePost() {
+    this.postService.deletePost(this.id);
   }
 }

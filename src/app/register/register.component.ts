@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../login/login.service';
-import { ProfileService } from '../profile/profile-detail/profile.service';
+import { ProfileService } from '../profile/profile.service';
 import { User } from '../shared/user.model';
 
 @Component({

@@ -6,8 +6,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class PageService {
     postsChanged = new Subject<Post[]>();
-    private headers = new Headers({ 'Content-Type': 'application/json',
-    'Authorization' : 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTMyNDI5OTgsImlhdCI6MTUxMzA3MDE5OCwic3ViIjoiTmllbHNzIn0.sCU2-gadSrTGyAltU1O08aXRFf9u9GOKs9zfrDuSbdw'});
+    private headers = new Headers({ 'Content-Type': 'application/json'});
     private serverUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/posts';
 
     private posts: Post[] = [];
@@ -26,7 +25,9 @@ export class PageService {
   }
 
   private httpPostPostToPage(post) {
-    return this.http.post(this.serverUrl, post, {headers: this.headers})
+    return this.http.post(this.serverUrl, post, {headers: new Headers({ 'Content-Type': 'application/json',
+    'Authorization' : localStorage.getItem('token')})
+    })
     .toPromise()
     .then((response) => {
       return response.json() as Post;

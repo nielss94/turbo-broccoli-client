@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
-import { User } from '../../shared/user.model';
+import { User } from '../shared/user.model';
 
 @Injectable()
 export class ProfileService {
     userChanged = new Subject<User>();
     subscriptionsChanged = new Subject<string[]>();
-    private headers = new Headers({ 'Content-Type': 'application/json',
-    'Authorization' : 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTMyNDI5OTgsImlhdCI6MTUxMzA3MDE5OCwic3ViIjoiTmllbHNzIn0.sCU2-gadSrTGyAltU1O08aXRFf9u9GOKs9zfrDuSbdw'});
+    private headers = new Headers({ 'Content-Type': 'application/json'});
     private usersUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/users';
     private subscriptionsUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/subscriptions';
 
@@ -19,6 +18,18 @@ export class ProfileService {
 
     private httpGetUser(id: Number) {
       return this.http.get(this.usersUrl + '/' + id.toString(), {headers: this.headers})
+      .toPromise()
+      .then((response) => {
+        return response.json() as User;
+      })
+      .catch((error) => {
+        return this.handleError(error);
+      });
+    }
+    
+    private httpDeleteUser(id: Number) {
+      return this.http.delete(this.usersUrl + '/' + id.toString(), {headers: new Headers({ 'Content-Type': 'application/json',
+      'Authorization' : localStorage.getItem('token')})})
       .toPromise()
       .then((response) => {
         return response.json() as User;
@@ -43,7 +54,9 @@ export class ProfileService {
       return this.http.post(this.subscriptionsUrl, {
         userId: userId.toString(),
         page: page
-      }, {headers: this.headers})
+      }, {headers: new Headers({ 'Content-Type': 'application/json',
+      'Authorization' : localStorage.getItem('token')})
+      })
       .toPromise()
       .then((response) => {
         return response.json();
@@ -105,6 +118,17 @@ export class ProfileService {
       .then((user) => {
           this.user = user;
           this.userChanged.next(this.user);
+      })
+      .catch((rejected) => {
+          console.log(rejected);
+      });
+    }
+
+    public deleteUser(user){
+      console.log(user.id);
+      this.httpDeleteUser(user.id)
+      .then((user) => {
+          console.log('user deleted');
       })
       .catch((rejected) => {
           console.log(rejected);
