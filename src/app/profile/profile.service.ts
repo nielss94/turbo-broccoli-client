@@ -7,7 +7,8 @@ import { User } from '../shared/user.model';
 export class ProfileService {
     userChanged = new Subject<User>();
     subscriptionsChanged = new Subject<string[]>();
-    private headers = new Headers({ 'Content-Type': 'application/json'});
+    private headers = new Headers({ 'Content-Type': 'application/json',
+    'Authorization' : 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTMyNDI5OTgsImlhdCI6MTUxMzA3MDE5OCwic3ViIjoiTmllbHNzIn0.sCU2-gadSrTGyAltU1O08aXRFf9u9GOKs9zfrDuSbdw'});
     private usersUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/users';
     private subscriptionsUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/subscriptions';
 
@@ -28,8 +29,7 @@ export class ProfileService {
     }
     
     private httpDeleteUser(id: Number) {
-      return this.http.delete(this.usersUrl + '/' + id.toString(), {headers: new Headers({ 'Content-Type': 'application/json',
-      'Authorization' : localStorage.getItem('token')})})
+      return this.http.delete(this.usersUrl + '/' + id.toString(), {headers: this.headers})
       .toPromise()
       .then((response) => {
         return response.json() as User;
@@ -54,9 +54,7 @@ export class ProfileService {
       return this.http.post(this.subscriptionsUrl, {
         userId: userId.toString(),
         page: page
-      }, {headers: new Headers({ 'Content-Type': 'application/json',
-      'Authorization' : localStorage.getItem('token')})
-      })
+      }, {headers: this.headers})
       .toPromise()
       .then((response) => {
         return response.json();

@@ -6,7 +6,8 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class PostService {
     postChanged = new Subject<Post>();
-    private headers = new Headers({ 'Content-Type': 'application/json'});
+    private headers = new Headers({ 'Content-Type': 'application/json',
+    'Authorization' : 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTMyNDI5OTgsImlhdCI6MTUxMzA3MDE5OCwic3ViIjoiTmllbHNzIn0.sCU2-gadSrTGyAltU1O08aXRFf9u9GOKs9zfrDuSbdw'});
     private serverUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/posts';
 
     private post: Post;
@@ -23,10 +24,9 @@ export class PostService {
         return this.handleError(error);
       });
     }
+    
     private httpDeletePost(id: string) {
-      return this.http.delete(this.serverUrl + '/' + id, {headers: new Headers({ 'Content-Type': 'application/json',
-      'Authorization' : localStorage.getItem('token')})
-      })
+      return this.http.delete(this.serverUrl + '/' + id, {headers: this.headers})
       .toPromise()
       .then((response) => {
         return response.json() as Post;
