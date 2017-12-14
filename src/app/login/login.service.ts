@@ -14,7 +14,8 @@ export class LoginService {
 
     constructor(private http: Http, private router: Router, private route: ActivatedRoute) {}
     public httpLogin(user: string, password: string) {
-        return this.http.post(this.serverUrl, {username: user, password: password}, {headers: this.headers}).toPromise()
+        return this.http.post(this.serverUrl, {username: user, password: password}, {headers: this.headers})
+        .toPromise()
         .then((response) => {
             localStorage.setItem('username', response.json().username);
             localStorage.setItem('token', response.json().token);

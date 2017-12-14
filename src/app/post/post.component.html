@@ -12,6 +12,7 @@
 
             <a routerLink="/g/{{post.page}}">/g/{{post.page}}</a>     
             <p>Post by {{post.user}}</p>  
+            <a routerLink="/g/{{post.page}}" (click)="deletePost()" *ngIf="loginService.loggedIn()">Remove post</a>
         </div> 
         <div class="card-reveal">
             <span class="card-title">Post a comment<i class="material-icons right">close</i></span>

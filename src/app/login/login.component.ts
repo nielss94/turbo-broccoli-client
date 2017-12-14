@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.loginService.httpLogin(this.username, this.password)
       .then((result) => {
         if (result) {
-          this.router.navigate(['../']);
+          this.router.navigate(['/profile']);
         }else {
           console.log('failed to log in'  );
         }

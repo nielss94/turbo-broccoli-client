@@ -6,9 +6,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class DashboardService {
     postsChanged = new Subject<Post[]>();
-    private headers = new Headers({ 'Content-Type': 'application/json',
-    'Authorization' : 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE' +
-    '1MTI3Mzk5MDgsImlhdCI6MTUxMjU2NzEwOCwic3ViIjoiRmVsaXgifQ.zCwEyOBMqCzAyxSa0NjCTqP1r2shyBquHsv_Xjubv-8'});
+    private headers = new Headers({ 'Content-Type': 'application/json'});
     private serverUrl = 'https://turbo-broccoli-server.herokuapp.com/api/v1' + '/posts';
 
     private posts: Post[] = [];

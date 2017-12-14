@@ -9,22 +9,22 @@ export class User {
         this.username = username;
     }
 
-    public getId(): Number {
+    public get Id(): Number {
         return this.id;
     }
-    public setId(v: Number) {
+    public set Id(v: Number) {
         this.id = v;
     }
-    public getEmail(): string {
+    public get Email(): string {
         return this.email;
     }
-    public setEmail(v: string) {
+    public set Email(v: string) {
         this.email = v;
     }
-    public getUsername(): string {
+    public get Username(): string {
         return this.username;
     }
-    public setUsername(v: string) {
+    public set Username(v: string) {
         this.username = v;
     }
 }

@@ -12,10 +12,9 @@ export class Post {
     private createdAt: Date;
     private updatedAt: Date;
     private upCoins: Number;
-    private downCoins: Number;
 
     constructor(_id: string, title: string, content: string, user: string, page: string, tags: string[], comments: Comment[],
-                    createdAt: Date, updatedAt: Date, upCoins: Number, downCoins: Number) {
+                    createdAt: Date, updatedAt: Date, upCoins: Number) {
         this._id = _id;
         this.title = title;
         this.content = content;
@@ -26,73 +25,66 @@ export class Post {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.upCoins = upCoins;
-        this.downCoins = downCoins;
     }
 
-    public getId(): string {
+    public get Id(): string {
         return this._id;
     }
-    public setId(v: string) {
+    public set Id(v: string) {
         this._id = v;
     }
-    public getTitle(): string {
+    public get Title(): string {
         return this.title;
     }
-    public setTitle(v: string) {
+    public set Title(v: string) {
         this.title = v;
     }
-    public getContent(): string {
+    public get Content(): string {
         return this.content;
     }
-    public setContent(v: string) {
+    public set Content(v: string) {
         this.content = v;
     }
-    public getUser(): string {
+    public get User(): string {
         return this.user;
     }
-    public setUser(v: string) {
+    public set User(v: string) {
         this.user = v;
     }
-    public getPage(): string {
+    public get Page(): string {
         return this.page;
     }
-    public setPage(v: string) {
+    public set Page(v: string) {
         this.page = v;
     }
-    public getTags(): string[] {
+    public get Tags(): string[] {
         return this.tags;
     }
-    public setTags(v: string[]) {
+    public set Tags(v: string[]) {
         this.tags = v;
     }
-    public getComments(): Comment[] {
+    public get Comments(): Comment[] {
         return this.comments;
     }
-    public setComments(v: Comment[]) {
+    public set Comments(v: Comment[]) {
         this.comments = v;
     }
-    public getCreatedAt(): Date {
+    public get CreatedAt(): Date {
         return this.createdAt;
     }
-    public setCreatedAt(v: Date) {
+    public set CreatedAt(v: Date) {
         this.createdAt = v;
     }
-    public getUpdatedAt(): Date {
+    public get UpdatedAt(): Date {
         return this.updatedAt;
     }
-    public setUpdatedAt(v: Date) {
+    public set UpdatedAt(v: Date) {
         this.updatedAt = v;
     }
-    public getUpCoins(): Number {
+    public get UpCoins(): Number {
         return this.upCoins;
     }
-    public setUpCoins(v: Number) {
+    public set UpCoins(v: Number) {
         this.upCoins = v;
-    }
-    public getDownCoins(): Number {
-        return this.downCoins;
-    }
-    public setDownCoins(v: Number) {
-        this.downCoins = v;
     }
 }

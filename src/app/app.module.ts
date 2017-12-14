@@ -17,7 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
 import { LoginService } from './login/login.service';
 import { PostService } from './post/post.service';
-import { ProfileService } from './profile/profile-detail/profile.service';
+import { ProfileService } from './profile/profile.service';
 import { RegisterComponent } from './register/register.component';
 
 @NgModule({

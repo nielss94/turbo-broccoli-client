@@ -2,52 +2,46 @@ export class Comment {
     constructor(private _id: string, private content: string, private user: string, private postId: string, private downCoins: Number,
                 private upCoins: Number, private createdAt: Date, private updatedAt: Date) { }
 
-    public getId(): string {
+    public get Id(): string {
         return this._id;
     }
-    public setId(v: string) {
+    public set Id(v: string) {
         this._id = v;
     }
-    public getContent(): string {
+    public get Content(): string {
         return this.content;
     }
-    public setContent(v: string) {
+    public set Content(v: string) {
         this.content = v;
     }
-    public getUser(): string {
+    public get User(): string {
         return this.user;
     }
-    public setUser(v: string) {
+    public set User(v: string) {
         this.user = v;
     }
-    public getCreatedAt(): Date {
+    public get CreatedAt(): Date {
         return this.createdAt;
     }
-    public setCreatedAt(v: Date) {
+    public set CreatedAt(v: Date) {
         this.createdAt = v;
     }
-    public getUpdatedAt(): Date {
+    public get UpdatedAt(): Date {
         return this.updatedAt;
     }
-    public setUpdatedAt(v: Date) {
+    public set UpdatedAt(v: Date) {
         this.updatedAt = v;
     }
-    public getUpCoins(): Number {
+    public get UpCoins(): Number {
         return this.upCoins;
     }
-    public setUpCoins(v: Number) {
+    public set UpCoins(v: Number) {
         this.upCoins = v;
     }
-    public getDownCoins(): Number {
-        return this.downCoins;
-    }
-    public setDownCoins(v: Number) {
-        this.downCoins = v;
-    }
-    public getPostId(): string {
+    public get PostId(): string {
         return this.postId;
     }
-    public setPostId(v: string) {
+    public set PostId(v: string) {
         this.postId = v;
     }
 }
